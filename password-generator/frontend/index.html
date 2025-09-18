@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>🔒 Secure Password Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <h1>🔒 Secure Password Generator</h1>
+
+      <div class="field">
+        <label for="length">Password length (4–100)</label>
+        <input id="length" type="number" min="4" max="100" placeholder="e.g., 12" />
+      </div>
+
+      <fieldset class="options">
+        <legend>Include characters</legend>
+        <label><input id="letters" type="checkbox" checked /> Letters (A–Z, a–z)</label>
+        <label><input id="digits" type="checkbox" checked /> Digits (0–9)</label>
+        <label><input id="special" type="checkbox" checked /> Special (!@#$%^&*)</label>
+      </fieldset>
+
+      <div class="actions">
+        <button id="generateBtn" class="primary">⚡ Generate Password</button>
+      </div>
+
+      <div class="result-row">
+        <input id="resultBox" type="text" readonly placeholder="Generated password appears here" />
+        <button id="copyBtn" class="secondary">📋 Copy</button>
+      </div>
+
+      <div id="strengthMeter" class="strength">Strength: ❓</div>
+      <div class="note">Tip: Use at least 12 characters for strong security.</div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="calculator">
+    <h1>🧮 My Calculator</h1>
+
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+
+    <div class="buttons">
+      <button onclick="calculate('add')">➕ Add</button>
+      <button onclick="calculate('subtract')">➖ Subtract</button>
+      <button onclick="calculate('multiply')">✖ Multiply</button>
+      <button onclick="calculate('divide')">➗ Divide</button>
+    </div>
+
+    <div id="resultBox">Result will appear here</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
