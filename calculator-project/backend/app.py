@@ -1,34 +1,52 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import math
+import re
 
 app = Flask(__name__)
 CORS(app)  # allow frontend to connect
 
+
+# Safe evaluation of math expressions
+def safe_eval(expr):
+    try:
+        # Allow only numbers, operators, and decimal points
+        if not re.match(r'^[0-9+\-*/%.^() ]+$', expr):
+            return "error", "Invalid characters in expression"
+
+        # Replace ^ with ** for power
+        expr = expr.replace("^", "**")
+
+        # Evaluate safely
+        result = eval(expr, {"__builtins__": None}, {})
+        return result
+    except ZeroDivisionError:
+        return "error", "Division by zero not allowed"
+    except Exception as e:
+        return "error", str(e)
+
+
 @app.route("/")
 def home():
-    return "✅ Calculator Backend is Running!"
+    return jsonify({"message": "✅ Calculator Backend is Running!"})
+
 
 @app.route("/calculate", methods=["POST"])
 def calculate():
     data = request.json
-    num1 = float(data.get("num1", 0))
-    num2 = float(data.get("num2", 0))
-    operation = data.get("operation")
 
-    result = None
-    if operation == "add":
-        result = num1 + num2
-    elif operation == "subtract":
-        result = num1 - num2
-    elif operation == "multiply":
-        result = num1 * num2
-    elif operation == "divide":
-        if num2 != 0:
-            result = num1 / num2
-        else:
-            return jsonify({"error": "Division by zero not allowed"}), 400
+    if not data or "expression" not in data:
+        return jsonify({"status": "error", "message": "No expression provided"}), 400
 
-    return jsonify({"result": result})
+    expression = data["expression"]
+
+    result = safe_eval(expression)
+
+    if isinstance(result, tuple) and result[0] == "error":
+        return jsonify({"status": "error", "message": result[1]}), 400
+
+    return jsonify({"status": "success", "result": result})
+
 
 if __name__ == "__main__":
     app.run(debug=True)

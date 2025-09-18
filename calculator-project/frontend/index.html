@@ -8,16 +8,36 @@
 </head>
 <body>
   <div class="calculator">
-    <h1>🧮 My Calculator</h1>
+    <h1>🧮Calculator</h1>
 
-    <input type="number" id="num1" placeholder="Enter first number">
-    <input type="number" id="num2" placeholder="Enter second number">
+    <!-- Display -->
+    <input type="text" id="display" disabled placeholder="0">
 
+    <!-- Buttons -->
     <div class="buttons">
-      <button onclick="calculate('add')">➕ Add</button>
-      <button onclick="calculate('subtract')">➖ Subtract</button>
-      <button onclick="calculate('multiply')">✖ Multiply</button>
-      <button onclick="calculate('divide')">➗ Divide</button>
+      <button onclick="clearDisplay()" class="clear">C</button>
+      <button onclick="append('%')">%</button>
+      <button onclick="append('**')">^</button>
+      <button onclick="append('/')">÷</button>
+
+      <button onclick="append('7')">7</button>
+      <button onclick="append('8')">8</button>
+      <button onclick="append('9')">9</button>
+      <button onclick="append('*')">×</button>
+
+      <button onclick="append('4')">4</button>
+      <button onclick="append('5')">5</button>
+      <button onclick="append('6')">6</button>
+      <button onclick="append('-')">−</button>
+
+      <button onclick="append('1')">1</button>
+      <button onclick="append('2')">2</button>
+      <button onclick="append('3')">3</button>
+      <button onclick="append('+')">+</button>
+
+      <button onclick="append('0')" class="zero">0</button>
+      <button onclick="append('.')">.</button>
+      <button onclick="calculateResult()" class="equals">=</button>
     </div>
 
     <div id="resultBox">Result will appear here</div>
