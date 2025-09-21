@@ -13,11 +13,7 @@
 - [📌 Introduction](#-introduction)  
 - [⚡ Projects](#-projects)  
 - [🚀 Quick Start](#-quick-start)  
-- [🎥 Demo](#-demo)  
-- [🌟 Contributing](#-contributing)  
-- [📜 License](#-license)  
 
----
 
 ## 📌 Introduction  
 This repository contains **multiple beginner-friendly Python projects** that demonstrate problem-solving, UI design, and coding fundamentals.  
@@ -45,3 +41,8 @@ Clone this repo:
 ```bash
 git clone https://github.com/Sinchana-K28/CODSOFT.git
 cd CODSOFT
+
+## To Run
+cd ToDoApp
+python todo.py
+
