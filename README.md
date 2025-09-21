@@ -44,5 +44,5 @@ cd CODSOFT
 
 ## To Run
 cd ToDoApp
-python todo.py
+python app.py
 
